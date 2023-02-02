@@ -69,7 +69,9 @@ public:
         return isBasicMove(x, y) && noThreat(x, y);
     }
     //当前棋子是否可以吃掉对方的王 用于判断对方是否处于被将军状态
-    //实现原理是把对方的王坐标输入isValidMove中
+    //实现原理是把对方的王坐标输入isValidMove中XXXXXXXX
+    //isThreat是要重写一遍给list的判断
+    //和isvaildmove很类似
     virtual bool isThreat(const std::list<std::pair<Pos, Piece::PieceType>>& pieces) const = 0;
     virtual const std::list<Pos> getPossibleMoves() const = 0;
 

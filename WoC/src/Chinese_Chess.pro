@@ -27,6 +27,7 @@ HEADERS += \
     mainui.h \
     network.h \
     piece.h \
+    rook.h \
     warning.h
 
 # Default rules for deployment.
