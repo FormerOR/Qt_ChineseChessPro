@@ -22,22 +22,23 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Cell_t {
-    const uint offsetsAndSize[12];
-    char stringdata0[21];
+    const uint offsetsAndSize[14];
+    char stringdata0[31];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Cell_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_Cell_t qt_meta_stringdata_Cell = {
     {
 QT_MOC_LITERAL(0, 4), // "Cell"
-QT_MOC_LITERAL(5, 5), // "click"
-QT_MOC_LITERAL(11, 0), // ""
-QT_MOC_LITERAL(12, 1), // "x"
-QT_MOC_LITERAL(14, 1), // "y"
-QT_MOC_LITERAL(16, 4) // "fade"
+QT_MOC_LITERAL(5, 7), // "isclick"
+QT_MOC_LITERAL(13, 0), // ""
+QT_MOC_LITERAL(14, 1), // "x"
+QT_MOC_LITERAL(16, 1), // "y"
+QT_MOC_LITERAL(18, 4), // "fade"
+QT_MOC_LITERAL(23, 7) // "onclick"
 
     },
-    "Cell\0click\0\0x\0y\0fade"
+    "Cell\0isclick\0\0x\0y\0fade\0onclick"
 };
 #undef QT_MOC_LITERAL
 
@@ -47,7 +48,7 @@ static const uint qt_meta_data_Cell[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -55,15 +56,17 @@ static const uint qt_meta_data_Cell[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   26,    2, 0x06,    1 /* Public */,
+       1,    2,   32,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   31,    2, 0x08,    4 /* Private */,
+       5,    0,   37,    2, 0x08,    4 /* Private */,
+       6,    0,   38,    2, 0x08,    5 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -75,15 +78,16 @@ void Cell::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         auto *_t = static_cast<Cell *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->click((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 0: _t->isclick((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 1: _t->fade(); break;
+        case 2: _t->onclick(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (Cell::*)(int , int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Cell::click)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Cell::isclick)) {
                 *result = 0;
                 return;
             }
@@ -99,7 +103,7 @@ const QMetaObject Cell::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Cell_t
 , QtPrivate::TypeAndForceComplete<Cell, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -126,19 +130,19 @@ int Cell::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
 
 // SIGNAL 0
-void Cell::click(int _t1, int _t2)
+void Cell::isclick(int _t1, int _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

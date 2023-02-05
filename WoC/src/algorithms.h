@@ -3,6 +3,12 @@
 
 #include "board.h"
 #include "king.h"
+#include "rook.h"
+#include "pawn.h"
+#include "adviser.h"
+#include "elephant.h"
+#include "horse.h"
+#include "cannon.h"
 
 //工具类
 class Algorithms {

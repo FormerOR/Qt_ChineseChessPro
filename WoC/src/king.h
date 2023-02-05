@@ -10,8 +10,7 @@ private:
 public :
     King(int x,int y,bool side):Piece(x,y,side ? PieceType::RED_SHUAI : PieceType::BLACK_JIANG){}
     virtual bool isBasicMove(int x, int y) const{
-        //if(!Board::getBoard()->find(x,y,side()).empty())return false;
-
+        if(!Board::getBoard()->find(x,y,side()).empty())return false;
         if(Board::getBoard()->find(x,y).empty() || !isSidePiece(*(Board::getBoard()->find(x,y).begin())))//要去的位置是否为空或者是敌方的一个棋子
         {
             if(isInNinePalaces(x,y))//要去的地方是否是在九宫格里

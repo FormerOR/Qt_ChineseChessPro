@@ -17,15 +17,20 @@ SOURCES += \
     piece.cpp
 
 HEADERS += \
+    adviser.h \
     algorithms.h \
     board.h \
+    cannon.h \
     cell.h \
     dialogui.h \
+    elephant.h \
     exception.h \
+    horse.h \
     king.h \
     loginui.h \
     mainui.h \
     network.h \
+    pawn.h \
     piece.h \
     rook.h \
     warning.h

@@ -49,11 +49,13 @@ void Network::onResponse(QNetworkReply* reply) {
     timer.stop();
     try {
         auto code = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
+        //qDebug()<<code;
         if (code / 100 != 2)    //2xx表示服务器正常响应
             error();
         auto data = reply->readAll();
         QJsonParseError parser;
         auto json = QJsonDocument::fromJson(data, &parser);
+        //qDebug()<<json;
         if (parser.error != QJsonParseError::NoError || json.isEmpty() || !json.isObject())
             error();
         auto json_object = json.object();
@@ -80,8 +82,11 @@ void Network::onResponse(QNetworkReply* reply) {
         case RequestType::LOGIN:{
             if(!json_object["Success"].toBool())
                 emit failure(json_object["ErrMessage"].toString());
-            else
+            else{
+                if (json_object.contains("User"))
+                    username=json_object["User"].toString();
                 emit loginOK();
+            }
         }break;
         case RequestType::SIGNUP:{
             if(!json_object["Success"].toBool())
@@ -94,7 +99,7 @@ void Network::onResponse(QNetworkReply* reply) {
 
         //}break;
         case RequestType::MOVE:{
-
+            emit move(std::make_pair(json_object["X1"].toInt(),json_object["Y1"].toInt()),std::make_pair(json_object["X2"].toInt(),json_object["Y2"].toInt()));
         }break;
         }
         ////////////////////////

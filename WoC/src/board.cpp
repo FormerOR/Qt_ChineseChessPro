@@ -1,14 +1,21 @@
 #include "board.h"
 #include "algorithms.h"
+#include "network.h"
 #include "king.h"
+#include "rook.h"
+#include "pawn.h"
+#include "adviser.h"
+#include "elephant.h"
+#include "horse.h"
+#include "cannon.h"
 
 using Type = Piece::PieceType;
 
 Board::Board() {
     //Add your own code below
     //////////////////////////
-
-
+    connect(this,&Board::onMyMove,Network::getInstance(),&Network::onMove);
+    connect(Network::getInstance(),&Network::move,this,&Board::onMove);
     //////////////////////////
 }
 
@@ -29,12 +36,12 @@ void Board::onSetup(Cell** cells) {
     std::map<Type, Constructor> factory = {
         //请将nullptr替换为'new ClassName(x, y, side)'，请正确设置派生类构造函数参数
         { Type::JIANG_SHUAI, [](int x, int y, bool side)->const Piece* { return new King(x,y,side); } },
-        { Type::SHI, [](int x, int y, bool side)->const Piece* { return nullptr; } },
-        { Type::XIANG, [](int x, int y, bool side)->const Piece* { return nullptr; } },
-        { Type::MA, [](int x, int y, bool side)->const Piece* { return nullptr; } },
-        { Type::JU, [](int x, int y, bool side)->const Piece* { return nullptr; } },
-        { Type::PAO, [](int x, int y, bool side)->const Piece* { return nullptr; } },
-        { Type::BING_ZU, [](int x, int y, bool side)->const Piece* { return nullptr; } }
+        { Type::SHI, [](int x, int y, bool side)->const Piece* { return new Adviser(x,y,side); } },
+        { Type::XIANG, [](int x, int y, bool side)->const Piece* { return new Elephant(x,y,side); } },
+        { Type::MA, [](int x, int y, bool side)->const Piece* { return new Horse(x,y,side); } },
+        { Type::JU, [](int x, int y, bool side)->const Piece* { return new Rook(x,y,side); } },
+        { Type::PAO, [](int x, int y, bool side)->const Piece* { return new Cannon(x,y,side); } },
+        { Type::BING_ZU, [](int x, int y, bool side)->const Piece* { return new Pawn(x,y,side); } }
     };
     setPieces(factory);
     for (const auto& [pos, piece] : pieces)
@@ -126,8 +133,7 @@ void Board::onClick(int x, int y) {
         move(selected->pos(), pos);
         //Add your own code here
         //////////////////////////
-
-
+        emit onMyMove(selected->pos(),pos);
         //////////////////////////
         moved = true;
         your_turn = false;

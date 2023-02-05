@@ -30,6 +30,9 @@ private slots:
             setTextColor(Qt::black);
         setBackground(Qt::white);
     }
+    void onclick(){
+        emit Cell::isclick(this->x,this->y);
+    }
 public:
     const int x, y;
     Cell(int x, int y);
@@ -63,7 +66,7 @@ public:
         chosen = nullptr;
     }
 signals:
-    void click(int x, int y);
+    void isclick(int x, int y);
 };
 
 #endif // CELL_H

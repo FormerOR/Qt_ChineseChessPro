@@ -76,6 +76,7 @@ public:
     const std::list<std::pair<Pos, Piece::PieceType>> find(int x = -1, int y = -1, int side = -1) const;
 signals:
     void win(bool side);
+    void onMyMove(const Pos from,const Pos to);
 public slots:
     void onSetup(Cell**);
     void onClick(int x, int y);

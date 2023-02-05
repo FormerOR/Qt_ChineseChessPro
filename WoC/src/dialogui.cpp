@@ -19,7 +19,7 @@ DialogUI::DialogUI()
     connect(start,SIGNAL(clicked()),this,SLOT(onStart()));
     connect(exit,SIGNAL(clicked()),this,SLOT(onExit()));
     connect(Network::getInstance(),SIGNAL(findOK(QString)),this,SLOT(onFind(QString)));
-
+    connect(Board::getBoard(),&Board::win,this,&DialogUI::onWin);
     //////////////////////////
     pending->hide();
 }

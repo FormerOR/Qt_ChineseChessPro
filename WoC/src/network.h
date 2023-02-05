@@ -62,6 +62,7 @@ private:
     inline QNetworkRequest* setRequest(RequestType type, QString form) {
         QNetworkRequest* request;
         if (type >= RequestType::FIND) {
+            //qDebug()<<username;
             auto usr = QUrl::toPercentEncoding(username);
             request = new QNetworkRequest(QUrl(url[(int)type] + form + QString("&usr=%1").arg(usr)));
             if (type == RequestType::CONTINUE)
