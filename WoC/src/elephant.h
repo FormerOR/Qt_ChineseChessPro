@@ -3,6 +3,7 @@
 
 #include "piece.h"
 #include "board.h"
+#include "QDebug"
 
 class Elephant : public Piece
 {
@@ -16,12 +17,8 @@ public:
     virtual bool isBasicMove(int x,int y)const{
         if(Board::getBoard()->find(x,y).empty() || !isSidePiece(*(Board::getBoard()->find(x,y).begin()))){
             //象不能过河,即判断选择的点位一定要在己方区域内
-            bool isInside;
-            if(side()){
-                isInside=(y)<=5;
-            }else{
-                isInside=(y)>=6;
-            }
+            bool isInside=(y<=5);
+//            qDebug()<<y<<isInside;
             if(isInside){
                 for(int i=0;i<4;i++){
                     if(this->x+s[i].first==x&&this->y+s[i].second==y){

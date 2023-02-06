@@ -7,7 +7,7 @@
 class Pawn : public Piece
 {
 private:
-    int front = (side()?1:-1);
+    int front = (side()?1:1);
     const Pos s[3]={{-1,0},{1,0},{0,front}};
 public:
     Pawn(int x,int y,bool side):Piece(x,y,side ? PieceType::RED_BING: PieceType::BLACK_ZU){};

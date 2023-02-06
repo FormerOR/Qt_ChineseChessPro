@@ -97,17 +97,19 @@ void Board::setPieces(const std::map<Type, Constructor> & factory) {
 }
 
 void Board::move(const Pos from, const Pos to) {
+//    qDebug()<<pieces;
     const auto piece = pieces.at(from);
     piece->move(to.first, to.second);
+//    qDebug()<<cells;
     auto cell_from = cells.at(from);
     cell_from->change(nullptr);
+//    qDebug()<<cells;
     auto cell_to = cells.at(to);
     cell_to->change(piece);
     pieces.erase(from);
-    /*  显而易见的胜利条件，但是象棋规则一般是以对方无棋可走为胜利条件
+//      显而易见的胜利条件，但是象棋规则一般是以对方无棋可走为胜利条件
     if (pieces.count(to) && removeSide(pieces.at(to)->type) == Type::JIANG_SHUAI)
         emit win(your_turn ? side() : !side());
-    */
     pieces[to] = piece;
     judgeStatus();
 }
@@ -130,11 +132,12 @@ void Board::onClick(int x, int y) {
         return;
     if (selected->isValidMove(x, y)) {
         cells.at(pos)->fineMove();
-        move(selected->pos(), pos);
+//        qDebug()<<"Board.cpp:onClick->selected->pos()在move之前:"<<selected->pos();
         //Add your own code here
         //////////////////////////
         emit onMyMove(selected->pos(),pos);
         //////////////////////////
+        move(selected->pos(), pos);
         moved = true;
         your_turn = false;
         selected = nullptr;
@@ -144,6 +147,7 @@ void Board::onClick(int x, int y) {
 
 void Board::onMove(const Pos from, const Pos to) {
     std::lock_guard guard(lock);
+//    qDebug()<<"Board:onMove->from,to:"<<from<<to;
     move(from, to);
     your_turn = true;
     moved = false;

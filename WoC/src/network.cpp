@@ -41,6 +41,7 @@ void Network::readSettings() {
 }
 
 void Network::onMove(const std::pair<int, int> from, const std::pair<int, int> to) {
+    qDebug()<<"network.cpp:onMove->X1Y1X2Y2:"<<from.first<<from.second<<to.first<<to.second;
     send(setRequest(RequestType::MOVE, QString("?X1=%1&Y1=%2&X2=%3&Y2=%4").arg(from.first).arg(from.second).arg(to.first).arg(to.second)));
 }
 
@@ -99,6 +100,7 @@ void Network::onResponse(QNetworkReply* reply) {
 
         //}break;
         case RequestType::MOVE:{
+            qDebug()<<"network.cpp:move->X1,Y1,X2,Y2:"<<json_object["X1"].toInt()<<json_object["Y1"].toInt()<<json_object["X2"].toInt()<<json_object["Y2"].toInt();
             emit move(std::make_pair(json_object["X1"].toInt(),json_object["Y1"].toInt()),std::make_pair(json_object["X2"].toInt(),json_object["Y2"].toInt()));
         }break;
         }

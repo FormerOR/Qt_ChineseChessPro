@@ -25,16 +25,19 @@ const std::map<Type, wchar_t> Piece::dict = {
 bool Piece::noThreat(int x, int y) const{
     //先创建一个所有棋子状态的列表
     auto list = Board::getBoard()->find();
+    bool flag =false;
+    std::pair<Pos, Piece::PieceType> temp;
     //找到当前选中棋子的信息
     for(auto &i:list){
         if(i.first.first==this->x&&i.first.second==this->y)
         {
             //如果去的地方有棋子 就把他删了
-            for(auto &j:list)
-            {
-                if(j.first.first==x&&j.first.second==y)
-                {
-                    list.remove(j);
+            for(auto j:list){
+                if(j.first.first==x&&j.first.second==y){
+                    temp.first.first=j.first.first;
+                    temp.first.second=j.first.second;
+                    temp.second=j.second;
+                    flag = true;
                 }
             }
             //把棋子移动过去
@@ -42,6 +45,8 @@ bool Piece::noThreat(int x, int y) const{
             i.first.second=y;
         }
     }
+    if(flag)
+        list.remove(temp);
     //调用isCheck判断当前状态棋盘是否会造成己方被将军,false为会被将军
     if(Algorithms::isCheck(list,side()))
         return false;

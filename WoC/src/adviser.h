@@ -9,7 +9,7 @@ class Adviser : public Piece
 private:
     const Pos s[4]={{1,1},{1,-1},{-1,1},{-1,-1}};
 public:
-    Adviser(int x,int y,bool side):Piece(x,y,side ? PieceType::RED_BING: PieceType::BLACK_ZU){};
+    Adviser(int x,int y,bool side):Piece(x,y,side ? PieceType::RED_SHI: PieceType::BLACK_SHI){};
     virtual bool isBasicMove(int x,int y)const{
         if(Board::getBoard()->find(x,y).empty() || !isSidePiece(*(Board::getBoard()->find(x,y).begin()))){
             if(isInNinePalaces(x,y)){
