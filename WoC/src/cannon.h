@@ -130,6 +130,40 @@ public:
             }
             return false;
         };
+//        if(kx==(this->x)){
+//            if(ky>this->y){
+//                int j = 0;
+//                for(int i=((this->y)+1);i<=ky-1;i++){
+//                    if(PosExistPiece(kx,i)) j++;
+//                }
+//                if(j==0||j>1)return false;
+//                else return true;
+//            }else if(ky<this->y){
+//            int j = 0;
+//            for(int i=ky+1;i<=((this->y)-1);i++){
+//                if(PosExistPiece(kx,i)) j++;
+//            }
+//                if(j==0||j>1)return false;
+//                else return true;
+//            }
+//        }else if(ky==(this->y)){
+//            if(kx>this->x){
+//                int j = 0;
+//                for(int i=((this->x)+1);i<=kx-1;i++){
+//                    if(PosExistPiece(i,ky)) j++;
+//                }
+//                if(j==0||j>1)return false;
+//                else return true;
+//            }else if(kx<this->x){
+//                int j = 0;
+//                for(int i=kx+1;i<=((this->x)-1);i++){
+//                    if(PosExistPiece(i,ky)) j++;
+//                }
+//                if(j==0||j>1)return false;
+//                else return true;
+//            }
+//        }else return false;
+
         //首先排除不在同行同列的情况
         if(this->x!=kx&&this->y!=ky)
             return false;
@@ -138,13 +172,13 @@ public:
         if(this->x==kx){
             //向上走
             if(ky>this->y){
-                for(int i=this->y+1;i<y;i++){
+                for(int i=this->y+1;i<ky;i++){
                     if(PosExistPiece(x,i))
                         count++;
                 }
             }else{
                 //向下走
-                for(int i=this->y-1;i>y;i--){
+                for(int i=this->y-1;i>ky;i--){
                     if(PosExistPiece(x,i))
                         count++;
                 }
@@ -155,15 +189,15 @@ public:
             //左右移动
             //向左走
             if(this->x>kx){
-                for(int i=x+1;i<this->x;i++){
-                    if(PosExistPiece(x,i))
+                for(int i=kx+1;i<this->x;i++){
+                    if(PosExistPiece(i,y))
                         count++;
                 }
 
             }else{
                 //向右走
-                for(int i=x-1;i>this->x;i--){
-                    if(PosExistPiece(x,i))
+                for(int i=kx-1;i>this->x;i--){
+                    if(PosExistPiece(i,y))
                         count++;
                 }
             }

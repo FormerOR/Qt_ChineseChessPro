@@ -213,7 +213,8 @@ Makefile: ../src/Chinese_Chess.pro D:/Qt6/qt/6.2.4/mingw_64/mkspecs/win32-g++/qm
 		D:/Qt6/qt/6.2.4/mingw_64/lib/Qt6Network.prl \
 		D:/Qt6/qt/6.2.4/mingw_64/lib/Qt6Core.prl \
 		D:/Qt6/qt/6.2.4/mingw_64/lib/Qt6EntryPoint.prl \
-		D:/Qt6/qt/6.2.4/mingw_64/mkspecs/features/build_pass.prf
+		D:/Qt6/qt/6.2.4/mingw_64/mkspecs/features/build_pass.prf \
+		../src/resource.qrc
 	$(QMAKE) -o Makefile ../src/Chinese_Chess.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug
 D:/Qt6/qt/6.2.4/mingw_64/mkspecs/features/spec_pre.prf:
 D:/Qt6/qt/6.2.4/mingw_64/mkspecs/features/device_config.prf:
@@ -359,6 +360,7 @@ D:/Qt6/qt/6.2.4/mingw_64/lib/Qt6Network.prl:
 D:/Qt6/qt/6.2.4/mingw_64/lib/Qt6Core.prl:
 D:/Qt6/qt/6.2.4/mingw_64/lib/Qt6EntryPoint.prl:
 D:/Qt6/qt/6.2.4/mingw_64/mkspecs/features/build_pass.prf:
+../src/resource.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../src/Chinese_Chess.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug
 

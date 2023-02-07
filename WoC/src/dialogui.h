@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
+
 class DialogUI : public QDialog {
     Q_OBJECT
 

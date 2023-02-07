@@ -90,13 +90,14 @@ private:
         throw Exception("Network Error!", 2);
     }
 signals:
+    void onWin();
     void loginOK();
     void signupOK();
     void findOK(const QString opp_name);
     void failure(const QString message);
     void move(const std::pair<int, int> from, const std::pair<int, int> to);
     //聊天功能
-    //void message(const QString);
+    void message(const QString);
 private slots:
     void onTimeOut() {
         try {
@@ -109,7 +110,7 @@ public slots:
     void onMove(const std::pair<int, int> from, const std::pair<int, int> to);
     void onResponse(QNetworkReply* reply);
     //聊天功能
-    //void sendMessage(QString);
+    void sendMessage(QString);
 };
 
 #endif // NETWORK_H

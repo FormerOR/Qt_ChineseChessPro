@@ -50,5 +50,5 @@ bool Piece::noThreat(int x, int y) const{
     //调用isCheck判断当前状态棋盘是否会造成己方被将军,false为会被将军
     if(Algorithms::isCheck(list,side()))
         return false;
-    return true;
+    else return true;
 }

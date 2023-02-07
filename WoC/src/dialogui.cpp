@@ -14,6 +14,7 @@ DialogUI::DialogUI()
     layout->addWidget(exit);
     layout->addWidget(pending);
     setLayout(layout);
+//    CommonHelper::onLoadFont();
     //Add your own code below
     //////////////////////////
     connect(start,SIGNAL(clicked()),this,SLOT(onStart()));

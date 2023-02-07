@@ -16,12 +16,14 @@ SOURCES += \
     network.cpp \
     piece.cpp
 
+
 HEADERS += \
     adviser.h \
     algorithms.h \
     board.h \
     cannon.h \
     cell.h \
+    commonhelper.h \
     dialogui.h \
     elephant.h \
     exception.h \
@@ -42,3 +44,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     network.json
+
+
+FORMS +=
+
+RESOURCES += \
+    resource.qrc

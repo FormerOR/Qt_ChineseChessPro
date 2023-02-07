@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Board_t {
-    const uint offsetsAndSize[28];
-    char stringdata0[71];
+    const uint offsetsAndSize[32];
+    char stringdata0[83];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Board_t, stringdata0) + ofs), len 
@@ -37,16 +37,19 @@ QT_MOC_LITERAL(16, 8), // "onMyMove"
 QT_MOC_LITERAL(25, 3), // "Pos"
 QT_MOC_LITERAL(29, 4), // "from"
 QT_MOC_LITERAL(34, 2), // "to"
-QT_MOC_LITERAL(37, 7), // "onSetup"
-QT_MOC_LITERAL(45, 6), // "Cell**"
-QT_MOC_LITERAL(52, 7), // "onClick"
-QT_MOC_LITERAL(60, 1), // "x"
-QT_MOC_LITERAL(62, 1), // "y"
-QT_MOC_LITERAL(64, 6) // "onMove"
+QT_MOC_LITERAL(37, 5), // "admit"
+QT_MOC_LITERAL(43, 5), // "onWin"
+QT_MOC_LITERAL(49, 7), // "onSetup"
+QT_MOC_LITERAL(57, 6), // "Cell**"
+QT_MOC_LITERAL(64, 7), // "onClick"
+QT_MOC_LITERAL(72, 1), // "x"
+QT_MOC_LITERAL(74, 1), // "y"
+QT_MOC_LITERAL(76, 6) // "onMove"
 
     },
     "Board\0win\0\0side\0onMyMove\0Pos\0from\0to\0"
-    "onSetup\0Cell**\0onClick\0x\0y\0onMove"
+    "admit\0onWin\0onSetup\0Cell**\0onClick\0x\0"
+    "y\0onMove"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +59,7 @@ static const uint qt_meta_data_Board[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,21 +67,25 @@ static const uint qt_meta_data_Board[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   44,    2, 0x06,    1 /* Public */,
-       4,    2,   47,    2, 0x06,    3 /* Public */,
+       1,    1,   56,    2, 0x06,    1 /* Public */,
+       4,    2,   59,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    1,   52,    2, 0x0a,    6 /* Public */,
-      10,    2,   55,    2, 0x0a,    8 /* Public */,
-      13,    2,   60,    2, 0x0a,   11 /* Public */,
+       8,    0,   64,    2, 0x0a,    6 /* Public */,
+       9,    0,   65,    2, 0x0a,    7 /* Public */,
+      10,    1,   66,    2, 0x0a,    8 /* Public */,
+      12,    2,   69,    2, 0x0a,   10 /* Public */,
+      15,    2,   74,    2, 0x0a,   13 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, 0x80000000 | 5, 0x80000000 | 5,    6,    7,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 9,    2,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,   11,   12,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 11,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   14,
     QMetaType::Void, 0x80000000 | 5, 0x80000000 | 5,    6,    7,
 
        0        // eod
@@ -92,9 +99,11 @@ void Board::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         switch (_id) {
         case 0: _t->win((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 1: _t->onMyMove((*reinterpret_cast< std::add_pointer_t<Pos>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Pos>>(_a[2]))); break;
-        case 2: _t->onSetup((*reinterpret_cast< std::add_pointer_t<Cell**>>(_a[1]))); break;
-        case 3: _t->onClick((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 4: _t->onMove((*reinterpret_cast< std::add_pointer_t<Pos>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Pos>>(_a[2]))); break;
+        case 2: _t->admit(); break;
+        case 3: _t->onWin(); break;
+        case 4: _t->onSetup((*reinterpret_cast< std::add_pointer_t<Cell**>>(_a[1]))); break;
+        case 5: _t->onClick((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 6: _t->onMove((*reinterpret_cast< std::add_pointer_t<Pos>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Pos>>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -124,7 +133,7 @@ const QMetaObject Board::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Board_t
 , QtPrivate::TypeAndForceComplete<Board, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Pos, std::false_type>, QtPrivate::TypeAndForceComplete<const Pos, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Cell * *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Pos, std::false_type>, QtPrivate::TypeAndForceComplete<const Pos, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Cell * *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const Pos, std::false_type>, QtPrivate::TypeAndForceComplete<const Pos, std::false_type>
 
 
 >,
@@ -151,13 +160,13 @@ int Board::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }

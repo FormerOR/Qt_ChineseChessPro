@@ -19,8 +19,8 @@ public:
             for(int i=0;i<8;i++){
                 if((x-(this->x)==s[i].first)&&(y-(this->y)==s[i].second)){
                     bool flag=((x-(this->x)==s[i].first)&&(y-(this->y)==s[i].second));
-                    qDebug()<<"让此次允许移动的判断条件"<<flag;
-                    qDebug()<<"马对应的i:"<<i;
+//                    qDebug()<<"让此次允许移动的判断条件"<<flag;
+//                    qDebug()<<"马对应的i:"<<i;
                     //相应的蹩马腿点位没有棋子
                     if(Board::getBoard()->find(this->x+b[i].first,this->y+b[i].second).empty()){
                         return true;

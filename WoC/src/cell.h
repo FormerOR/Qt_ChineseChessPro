@@ -26,9 +26,16 @@ private:
     }
 private slots:
     void fade() {
-        if (text() == "+")
+        if (text() == "+"){
             setTextColor(Qt::black);
-        setBackground(Qt::white);
+            setBackground(Qt::white);
+        }
+        else{
+            QColor color;
+            color.setRgb(133,109,114);
+            setBackground(color);
+        }
+
     }
     void onclick(){
         emit Cell::isclick(this->x,this->y);
@@ -43,6 +50,9 @@ public:
             fade();
             return;
         }
+        QColor color;
+        color.setRgb(133,109,114);
+        setBackground(color);
         setText(QString(piece->text()));
         if (piece->side())
             setTextColor(Qt::red);

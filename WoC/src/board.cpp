@@ -16,9 +16,12 @@ Board::Board() {
     //////////////////////////
     connect(this,&Board::onMyMove,Network::getInstance(),&Network::onMove);
     connect(Network::getInstance(),&Network::move,this,&Board::onMove);
+    connect(Network::getInstance(),&Network::onWin,this,&Board::onWin);
     //////////////////////////
 }
-
+void Board::onWin(){
+    emit win(side());
+}
 void Board::judgeStatus() {
     checked[!side()] = Algorithms::isCheck(!side());
     checked[side()] = Algorithms::isCheck(side());
@@ -124,7 +127,7 @@ void Board::onClick(int x, int y) {
         const auto& piece = pieces.at(pos);
         if (piece->side() == side()) {
             selected = piece;
-            qDebug()<<selected->isValidMove(x,y);
+//            qDebug()<<selected->isValidMove(x,y);
             cells.at(pos)->select();
             return;
         }
@@ -132,7 +135,7 @@ void Board::onClick(int x, int y) {
     if (!selected)
         return;
     if (selected->isValidMove(x, y)) {
-        qDebug()<<selected->isValidMove(x,y);
+//        qDebug()<<selected->isValidMove(x,y);
         cells.at(pos)->fineMove();
 //        qDebug()<<"Board.cpp:onClick->selected->pos()在move之前:"<<selected->pos();
         //Add your own code here
@@ -145,6 +148,10 @@ void Board::onClick(int x, int y) {
         selected = nullptr;
     } else
         cells.at(pos)->wrongMove();
+}
+
+void Board::admit(){
+    emit win(!side());
 }
 
 void Board::onMove(const Pos from, const Pos to) {

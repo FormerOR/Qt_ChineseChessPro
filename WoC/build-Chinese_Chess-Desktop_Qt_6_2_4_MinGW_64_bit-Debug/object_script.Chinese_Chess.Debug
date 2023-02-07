@@ -6,6 +6,7 @@ debug/board.o
 debug/mainui.o
 debug/network.o
 debug/piece.o
+debug/qrc_resource.o
 debug/moc_board.o
 debug/moc_cell.o
 debug/moc_dialogui.o

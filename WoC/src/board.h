@@ -78,6 +78,8 @@ signals:
     void win(bool side);
     void onMyMove(const Pos from,const Pos to);
 public slots:
+    void admit();
+    void onWin();
     void onSetup(Cell**);
     void onClick(int x, int y);
     void onMove(const Pos from, const Pos to);  //对方走棋
