@@ -124,6 +124,7 @@ void Board::onClick(int x, int y) {
         const auto& piece = pieces.at(pos);
         if (piece->side() == side()) {
             selected = piece;
+            qDebug()<<selected->isValidMove(x,y);
             cells.at(pos)->select();
             return;
         }
@@ -131,6 +132,7 @@ void Board::onClick(int x, int y) {
     if (!selected)
         return;
     if (selected->isValidMove(x, y)) {
+        qDebug()<<selected->isValidMove(x,y);
         cells.at(pos)->fineMove();
 //        qDebug()<<"Board.cpp:onClick->selected->pos()在move之前:"<<selected->pos();
         //Add your own code here

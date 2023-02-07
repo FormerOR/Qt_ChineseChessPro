@@ -7,20 +7,14 @@
 class Pawn : public Piece
 {
 private:
-    int front = (side()?1:1);
-    const Pos s[3]={{-1,0},{1,0},{0,front}};
+    const Pos s[3]={{-1,0},{1,0},{0,1}};
 public:
     Pawn(int x,int y,bool side):Piece(x,y,side ? PieceType::RED_BING: PieceType::BLACK_ZU){};
     virtual bool isBasicMove(int x,int y)const{
         if(Board::getBoard()->find(x,y).empty() || !isSidePiece(*(Board::getBoard()->find(x,y).begin()))){
-            bool isInside;
-            if(side()){
-                isInside=(this->y)<=5;
-            }else{
-                isInside=(this->y)>5;
-            }
+            bool isInside=(y<=5);
             if (isInside)
-                return y==(this->y)+front;
+                return y==(this->y)+1;
             else{
                 for(auto i:s){
                     if(x==(this->x)+i.first&&y==(this->y)+i.second)
