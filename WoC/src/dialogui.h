@@ -18,6 +18,7 @@ private slots:
     void onExit() {
         ::exit(0);
     }
+    void onWait();
     void onFind(const QString opp_name);
     void onWin(bool side);
     void onFailure(const QString message) {

@@ -21,6 +21,7 @@ DialogUI::DialogUI()
     connect(exit,SIGNAL(clicked()),this,SLOT(onExit()));
     connect(Network::getInstance(),SIGNAL(findOK(QString)),this,SLOT(onFind(QString)));
     connect(Board::getBoard(),&Board::win,this,&DialogUI::onWin);
+    connect(Board::getBoard(),&Board::waitSide,this,&DialogUI::onWait);
     //////////////////////////
     pending->hide();
 }
@@ -36,6 +37,10 @@ void DialogUI::onStart() {
     delete exit;
     exit = nullptr;
     pending->show();
+}
+void DialogUI::onWait(){
+    pending->setText(Board::getBoard()->isYourTurn()?QString("对方已出棋！\n现在是你的回合！"):QString("出棋成功！\n现在是对方的回合！"));
+    show();
 }
 
 void DialogUI::onFind(const QString opp_name) {

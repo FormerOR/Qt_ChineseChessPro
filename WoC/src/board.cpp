@@ -103,6 +103,7 @@ void Board::move(const Pos from, const Pos to) {
 //    qDebug()<<pieces;
     const auto piece = pieces.at(from);
     piece->move(to.first, to.second);
+    emit waitSide();
 //    qDebug()<<cells;
     auto cell_from = cells.at(from);
     cell_from->change(nullptr);
@@ -142,9 +143,10 @@ void Board::onClick(int x, int y) {
         //////////////////////////
         emit onMyMove(selected->pos(),pos);
         //////////////////////////
+        /// \brief move
+        your_turn = false;
         move(selected->pos(), pos);
         moved = true;
-        your_turn = false;
         selected = nullptr;
     } else
         cells.at(pos)->wrongMove();
@@ -157,8 +159,8 @@ void Board::admit(){
 void Board::onMove(const Pos from, const Pos to) {
     std::lock_guard guard(lock);
 //    qDebug()<<"Board:onMove->from,to:"<<from<<to;
-    move(from, to);
     your_turn = true;
+    move(from, to);
     moved = false;
 }
 
